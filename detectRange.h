@@ -1,4 +1,6 @@
 
+#define DISPLAY_SIZE  20
+
 typedef struct
 {
 int rangeStart;
@@ -8,3 +10,4 @@ int readingsInRange;
 
 int detectRange(int * reading,int size,rangeInfo *Data_struct);
 void printRangeInfo(rangeInfo *Data_struct,int totalRange);
+int chargingCurrentRange(int * readings,int totalData);
