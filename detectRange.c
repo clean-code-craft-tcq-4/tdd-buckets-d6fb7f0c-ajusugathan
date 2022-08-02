@@ -40,7 +40,7 @@ void printRangeInfo(rangeInfo *Data_struct,int totalRange)
     }
 
 }
-int chargingCurrentRange(int * readings,int totalData)
+int DetectAndDisplayRange(int * readings,int totalData)
 {
     int CheckedRanges;
     static rangeInfo DataForDisplay[DISPLAY_SIZE];
