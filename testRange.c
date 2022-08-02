@@ -17,5 +17,5 @@ void TEST_CASE_02()
 int main()
 {
    TEST_CASE_01();
-   TEST_CASE_01();
+   TEST_CASE_02();
 }
