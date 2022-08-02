@@ -27,7 +27,7 @@ int detectRange(int * readings,int size,rangeInfo *Data_struct)
 void printRangeInfo(rangeInfo *Data_struct,int totalRange)
 {
     printf("\nRange         Count\n");
-    for(int Rangecount=0;i<totalRange;Rangecount++)
+    for(int Rangecount=0;Rangecount<totalRange;Rangecount++)
     {
          if(Data_struct[Rangecount].readingsInRange != 1)
          {
