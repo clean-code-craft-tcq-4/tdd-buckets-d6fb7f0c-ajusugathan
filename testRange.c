@@ -33,6 +33,31 @@ void TEST_CASE_02()
     assert(DataForDisplay_02[2].readingsInRange == 1);    
 }
 
+void TEST_CASE_03()
+{
+    int data_03[6]={3,15,11,1,2,23};
+    static rangeInfo DataForDisplay_03[DISPLAY_SIZE];
+    int totalreadings_03=sizeof(data_03)/sizeof(data_03[0]);
+    assert(DetectAndDisplayRange(data_03,totalreadings_03) == 4);
+    assert(detectRange(data_03,totalreadings_03,DataForDisplay_03)==4);
+    
+    assert(DataForDisplay_03[0].rangeStart == 1);
+    assert(DataForDisplay_03[0].rangeEnd == 3);
+    assert(DataForDisplay_03[0].readingsInRange == 3);
+    
+    assert(DataForDisplay_03[1].rangeStart == 11);
+    assert(DataForDisplay_03[1].rangeEnd == 0);
+    assert(DataForDisplay_03[1].readingsInRange == 1); 
+    
+    assert(DataForDisplay_03[2].rangeStart == 15);
+    assert(DataForDisplay_03[2].rangeEnd == 0);
+    assert(DataForDisplay_03[2].readingsInRange == 1);  
+    
+    assert(DataForDisplay_03[3].rangeStart == 23);
+    assert(DataForDisplay_03[3].rangeEnd == 0);
+    assert(DataForDisplay_03[3].readingsInRange == 1); 
+}
+
 int main()
 {
    TEST_CASE_01();
