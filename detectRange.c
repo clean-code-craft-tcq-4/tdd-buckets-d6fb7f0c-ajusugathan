@@ -1,6 +1,25 @@
 #include <stdio.h>
 #include "detectRange.h"
 
+int * readingSorting(int* inputReading,int size)
+{
+    int temp_data;
+    for(int i=0;i<size;i++)
+    {
+        for(int j=i+1;j<size;j++)
+        {
+            if(inputReading[i]>inputReading[j])
+            {
+                temp_data=inputReading[i];
+                inputReading[i]=inputReading[j];
+                inputReading[j]=temp_data;
+            }
+        }
+
+    }
+    return(inputReading);
+}
+
 int detectRange(int * readings,int size,rangeInfo *Data_struct)
 {
     int totalRange=0;
@@ -17,6 +36,7 @@ int detectRange(int * readings,int size,rangeInfo *Data_struct)
        else
        {
        totalRange++;
+       Data_struct[totalRange].readingsInRange=0;
        Data_struct[totalRange].rangeStart=readings[Readcount+1];
        Data_struct[totalRange].readingsInRange++;
        }
@@ -44,7 +64,7 @@ int DetectAndDisplayRange(int * readings,int totalData)
 {
     int CheckedRanges;
     static rangeInfo DataForDisplay[DISPLAY_SIZE];
-    CheckedRanges=detectRange(readings,totalData,DataForDisplay);
+    CheckedRanges=detectRange(readingSorting(readings,totalData),totalData,DataForDisplay);
     printRangeInfo(DataForDisplay,CheckedRanges);
     return(CheckedRanges);
 }
