@@ -139,6 +139,14 @@ void TEST_CASE_06()
     
 }
 
+TEST_CASE_07()
+{
+    int data_07[3]={0,0,0};
+    static rangeInfo DataForDisplay_07[DISPLAY_SIZE];
+    int totalreadings_07=sizeof(data_07)/sizeof(data_07[0]);
+    assert(DetectAndDisplayRange(data_07,totalreadings_07) == 0);
+}
+
 int main()
 {
    TEST_CASE_01();
@@ -147,4 +155,5 @@ int main()
    TEST_CASE_04();
    TEST_CASE_05();
    TEST_CASE_06();
+   TEST_CASE_07();
 }
