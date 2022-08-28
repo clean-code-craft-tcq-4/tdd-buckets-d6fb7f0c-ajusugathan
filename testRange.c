@@ -7,7 +7,7 @@ void TEST_CASE_01()
     static rangeInfo DataForDisplay_01[DISPLAY_SIZE];
     int totalreadings_01=sizeof(data_01)/sizeof(data_01[0]);
     assert(DetectAndDisplayRange(data_01,totalreadings_01) == 1);
-    assert(detectRange(data_01,totalreadings_01,DataForDisplay_01)==1);
+    assert(detectRange(readingSorting(data_01,totalreadings_01),totalreadings_01,DataForDisplay_01)==1);
     assert(DataForDisplay_01[0].rangeStart == 4);
     assert(DataForDisplay_01[0].rangeEnd == 5);
     assert(DataForDisplay_01[0].readingsInRange == 2);
@@ -18,7 +18,7 @@ void TEST_CASE_02()
     static rangeInfo DataForDisplay_02[DISPLAY_SIZE];
     int totalreadings_02=sizeof(data_02)/sizeof(data_02[0]);
     assert(DetectAndDisplayRange(data_02,totalreadings_02) == 3);
-    assert(detectRange(data_02,totalreadings_02,DataForDisplay_02)==3);
+    assert(detectRange(readingSorting(data_02,totalreadings_02),totalreadings_02,DataForDisplay_02)==3);
     
     assert(DataForDisplay_02[0].rangeStart == 4);
     assert(DataForDisplay_02[0].rangeEnd == 5);
@@ -39,7 +39,7 @@ void TEST_CASE_03()
     static rangeInfo DataForDisplay_03[DISPLAY_SIZE];
     int totalreadings_03=sizeof(data_03)/sizeof(data_03[0]);
     assert(DetectAndDisplayRange(data_03,totalreadings_03) == 4);
-    assert(detectRange(data_03,totalreadings_03,DataForDisplay_03)==4);
+    assert(detectRange(readingSorting(data_03,totalreadings_03),totalreadings_03,DataForDisplay_03)==4);
     
     assert(DataForDisplay_03[0].rangeStart == 1);
     assert(DataForDisplay_03[0].rangeEnd == 3);
