@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include "detectRange.h"
 
+int removeZeroValue(int* inputReading,int* outputReading,int size)
+{
+   int finalsize=0;
+   for(int arrayCount=0;arrayCount<size;arrayCount++)
+   {
+	   if(inputReading[arrayCount]!=0)
+	   { 
+          outputReading[finalsize]=inputReading[arrayCount];
+		  finalsize++;
+	   }
+   }
+return(finalsize);
+}
+
 int * readingSorting(int* inputReading,int size)
 {
     int temp_data;
@@ -19,7 +33,6 @@ int * readingSorting(int* inputReading,int size)
     }
     return(inputReading);
 }
-
 int detectRange(int * readings,int size,rangeInfo *Data_struct)
 {
     int totalRange=0;
@@ -49,7 +62,7 @@ void printRangeInfo(rangeInfo *Data_struct,int totalRange)
     printf("\nRange         Count\n");
     for(int Rangecount=0;Rangecount<totalRange;Rangecount++)
     {
-         if(Data_struct[Rangecount].readingsInRange != 1)
+         if((Data_struct[Rangecount].readingsInRange != 1)&&(Data_struct[Rangecount].rangeStart !=Data_struct[Rangecount].rangeEnd))
          {
            printf("%d - %d , %d\n",Data_struct[Rangecount].rangeStart, Data_struct[Rangecount].rangeEnd,Data_struct[Rangecount].readingsInRange);
          }
@@ -62,9 +75,19 @@ void printRangeInfo(rangeInfo *Data_struct,int totalRange)
 }
 int DetectAndDisplayRange(int * readings,int totalData)
 {
-    int CheckedRanges;
+    int CheckedRanges=0;
     static rangeInfo DataForDisplay[DISPLAY_SIZE];
-    CheckedRanges=detectRange(readingSorting(readings,totalData),totalData,DataForDisplay);
-    printRangeInfo(DataForDisplay,CheckedRanges);
+    int FinalDataArray[totalData];
+    int ActualDatasize=0;
+    ActualDatasize=removeZeroValue(readings,&FinalDataArray[0],totalData);
+    if(ActualDatasize)
+    {
+       CheckedRanges=detectRange(readingSorting(&FinalDataArray[0],ActualDatasize),ActualDatasize,DataForDisplay);
+        printRangeInfo(DataForDisplay,CheckedRanges);
+     }
+     else
+     {
+        printf("\n All the datas are zero\n");
+     }
     return(CheckedRanges);
 }
