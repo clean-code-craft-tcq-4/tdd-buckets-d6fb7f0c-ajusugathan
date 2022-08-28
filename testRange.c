@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include "detectRange.h"
+#include "D2A_Converter.h"
 void TEST_CASE_01()
 {
     int data_01[2]={4,5};
