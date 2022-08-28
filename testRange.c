@@ -139,7 +139,7 @@ void TEST_CASE_06()
     
 }
 
-TEST_CASE_07()
+void TEST_CASE_07()
 {
     int data_07[3]={0,0,0};
     static rangeInfo DataForDisplay_07[DISPLAY_SIZE];
